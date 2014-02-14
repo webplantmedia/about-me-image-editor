@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset={+IO.encoding+}" />
+        <title>About me Image Editor Documentation</title>
+        <meta name="generator" content="About me Image Editor Documentation" />    
+        <script type="text/javascript" src="js/jzu.js"></script>
+        <script type="text/javascript" src="js/ui.js"></script>
+        <script type="text/javascript" src="js/sh.js"></script>
+        <link rel="stylesheet" href="css/sh.css" type="text/css">
+        <link rel="stylesheet" href="css/default.css" type="text/css">
+    </head>
+    <body>
+        <div id="main-wrapper">
+            <div id="main">
+                <div id="index" class="fixed">
+                    {+publish.classesIndex+}
+                </div>
+                <div class="header">About me Image Editor</div>
+                <div id="content" class="index-page">
+                    <h1 class="classTitle">Description</h1>
+                    <div class="summary">
+                        <div class="sectionItems">
+                            <p>About me Image Editor is designed and built by Angiemakes <a href="http://www.angiemakes.com">www.angiemakes.com</a></p>
+                        </div>
+                    </div>
+                    <h1 class="classTitle">Building</h1>
+                    <div class="summary">
+                        <div class="sectionItems">
+                            <p>The library files are compressed and optimized by using the Google Closure Compiler,
+                                so don't worry about using comments in the code, they get stripped out in the build
+                                version anyway (the thread worker files comments don't get compressed though, so plan accordingly).</p>
+                            <p>Building the local application can be done issuing the following commands :</p>
+                            <code>
+                                # cd tools<br />
+                                # build.bat // Windows workstation
+                            </code>
+                            <p>or</p>
+                            <code>
+                                # cd tools<br />
+                                # ./build.sh // Linux workstation
+                            </code>
+                            <p>Afterwards, point your browser to <em>index.php</em>. Build logs are kept in the logs folder, organized by date.</p>
+                        </div>
+                    </div>
+                    <h1 class="classTitle">Compatibility</h1>
+                    <div class="summary">
+                        <div class="sectionItems">
+                            <ul>
+                                <li>Internet Explorer 10</li>
+                                <li>Mozilla Firefox 10</li>
+                                <li>Opera 12</li>
+                                <li>Chrome 20</li>
+                                <li>Apple Safari 6</li>
+                            </ul>
+                            <p>The code should yield the same results on all the above browsers.</p>
+                        </div>
+                    </div>
+                    <h1 class="classTitle">Dependencies</h1>
+                    <div class="summary">
+                        <div class="sectionItems">
+                            <ul>
+                                <li>jQuery 1.10.2</li>
+                                <li>jQuery ClassyNotty 1.1.2</li>
+                                <li>jQuery Slider 5.0.0</li>
+                                <li>jQuery Hotkeys</li>
+                                <li>jQuery iScroll 5.1.1</li>
+                                <li>jQuery jCrop 0.9.12</li>
+                                <li>jQuery LazyLoad 1.9.3</li>
+                                <li>jQuery Spectrum 1.1.1</li>
+                                <li>jQuery Tipsy 1.0.0a</li>
+                                <li>Kinetic 5.0.1</li>
+                                <li>Modernizr 2.6.2</li>
+                                <li>Caman 4.1.1</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h1 class="classTitle">Directory Structure</h1>
+                    <div class="summary">
+                        <div class="sectionItems">
+                            <ul>
+                                <li>assets - application assets (cliparts, frames, backgrounds)</li>
+                                <li>deploy - folder containing the deployed CSS and JS files, both normal and minified</li>
+                                <li>docs - documentation folder</li>
+                                <li>logs - contains all external libraries</li>
+                                <li>logs - build logs are kept here</li>
+                                <li>src - source code files</li>
+                                <li>tools - building tools</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

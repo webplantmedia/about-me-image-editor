@@ -1,0 +1,9 @@
+..\deploy\editor.js:1649: WARNING - Suspicious code. This code lacks side-effects. Is there a bug?
+        xyz;
+        ^
+
+..\deploy\editor.js:4107: WARNING - Suspicious code. This code lacks side-effects. Is there a bug?
+                            }), false;
+                                ^
+
+0 error(s), 2 warning(s)
