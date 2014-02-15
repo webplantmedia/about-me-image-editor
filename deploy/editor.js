@@ -694,7 +694,16 @@ imageEditor.SHAPES = [{
         height: 600,
         scale: 1,
         src: "frame/frame-tanframe.png"
-    }];/**
+    }, {
+        id: 78,
+        type: "clipart",
+        tags: "frames",
+        width: 600,
+        height: 600,
+        scale: 1,
+        src: "frame/frame-grayladygray.png"
+    }];
+/**
  * 
  * @type Array
  * @constant
