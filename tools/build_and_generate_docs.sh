@@ -1,4 +1,4 @@
-@echo off
+#!/bin/sh
 
 echo =============== Setting up build environment ===============
 
@@ -9,7 +9,6 @@ rm -rf ../deploy/*.*
 echo - Compressing stylesheet
 cat stylesheet.filelist | xargs cat >> ../deploy/style.css
 java -jar yuicompressor-2.4.7.jar ../deploy/style.css -o ../deploy/style.min.css -v 2> ../logs/stylesheet.build.log
-
 
 echo - Compressing prerequisite libraries
 cat prerequisites.filelist | xargs cat >> ../deploy/prerequisites.js
@@ -25,6 +24,6 @@ java -jar google-closure-compiler.jar --js=../deploy/editor.js --js_output_file=
 
 echo - Generating documentation
 rm -rf ../docs/*.*
-java -jar jsdoc\jsrun.jar jsdoc\app\run.js -p -r -q -d=..\docs -t=jsdoc\templates\outline ..\src\js\ 2> ../logs/docs.log
+java -jar jsdoc\jsrun.jar jsdoc\app\run.js -p -r -q -d=../docs -t=jsdoc/templates/outline ../src/js/ 2> ../logs/docs.log
 
 echo =============== Done ====================================
