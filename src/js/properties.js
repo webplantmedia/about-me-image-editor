@@ -156,16 +156,17 @@ imageEditor.SETTINGS = [{
                 title: "Stroke Width",
                 data: {
                     type: "range",
-                    min: 0,
+                    min: 1,
                     max: 40,
                     step: 1,
-                    start: 0
+                    start: 1
                 }
             }, {
                 type: "StrokeColor",
                 title: "Stroke Color",
                 data: {
-                    type: "color"
+                    type: "color",
+                    transparent: true
                 }
             }]
     }, {

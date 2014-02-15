@@ -16,6 +16,7 @@ imageEditor.uiText = imageEditor.uiShape.extend(
                     __constructor: function(params) {
                         this.localFonts = ["Arial", "Georgia"];
                         this.cornerOffset = true;
+                        this.strokeCol = '#000000';
                         params.width || (params.width = 400);
                         this.__superobject(params);
                     },
@@ -119,15 +120,24 @@ imageEditor.uiText = imageEditor.uiShape.extend(
                         this.stroke.stroke(n);
                     },
                     getStrokeColor: function() {
-                        if (this.stroke)
+                        if (this.stroke) {
                             return this.stroke.stroke();
+                        }
                     },
                     setStrokeWidth: function(n) {
-                        n === 0 ? this._removeStroke() : (this._createStroke(), this.stroke.strokeWidth(n));
+                        this.strokeWid = n;
+                        if (n === 0) {
+                            this._removeStroke();
+                        }
+                        else {
+                            this._createStroke();
+                            this.stroke.strokeWidth(n);
+                        }
                     },
                     getStrokeWidth: function() {
-                        if (this.stroke)
+                        if (this.stroke) {
                             return this.stroke.strokeWidth();
+                        }
                     },
                     setOpacity: function(n) {
                         this.txt.opacity(n);
@@ -185,7 +195,6 @@ imageEditor.uiText = imageEditor.uiShape.extend(
                         this.stroke && (this._transferShadow(this.stroke, this.txt), this.stroke.remove(), this.stroke = null);
                     },
                     _getShadowedShape: function() {
-                        console.log('1');
                         return this.stroke || this.txt;
                     },
                     _transferShadow: function(n, t) {

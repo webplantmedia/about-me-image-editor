@@ -6,6 +6,10 @@ echo - Cleaning up previous builds
 
 rm -rf ../deploy/*.*
 
+echo - Compressing stylesheet
+cat stylesheet.filelist | xargs cat >> ../deploy/style.css
+java -jar yuicompressor-2.4.7.jar ../deploy/style.css -o ../deploy/style.min.css -v 2> ../logs/stylesheet.build.log
+
 echo - Compressing prerequisite libraries
 cat prerequisites.filelist | xargs cat >> ../deploy/prerequisites.js
 
@@ -17,15 +21,5 @@ java -jar google-closure-compiler.jar --js=../deploy/prerequisites.js --js_outpu
 
 echo - Compiling editor library
 java -jar google-closure-compiler.jar --js=../deploy/editor.js --js_output_file=../deploy/editor.min.js > ../logs/editor.build.log
-
-echo - Deploying web worker threads
-cp -R ../src/js/threads ../deploy
-
-echo - Generating documentation
-rm -rf ../docs/*.*
-java -jar jsdoc\jsrun.jar jsdoc\app\run.js ^
--p -r -q -d=..\docs ^
--t=jsdoc\templates\outline ^
-..\src\js\ > ../logs/docs.log
 
 echo =============== Done ====================================

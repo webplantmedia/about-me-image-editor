@@ -18,8 +18,8 @@
                 <div class="more" data-start="0">more</div>
             </nav>
             <section class="content editor">
-                <input type="file" id="upload" class="hidden" />
-                <input type="file" id="background" class="hidden" />
+                <input type="file" id="upload" class="hidden_s" />
+                <input type="file" id="background" class="hidden_s" />
                 <div class="body">
                     <?php
                     if (isset($_GET['editor'])) {
@@ -62,10 +62,10 @@
         <script src="deploy/editor.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/webfont/1.0.31/webfont.js"></script>
         <script>
-                            $(document).ready(function() {
-                                /* Boot up the editor and sail away */
-                                new ImageEditor();
-                            });
+                        $(document).ready(function() {
+                            /* Boot up the editor and sail away */
+                            new ImageEditor();
+                        });
         </script>
     </body>
 </html>

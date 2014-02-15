@@ -158,47 +158,6 @@ var editor = imageEditor.coreObject.extend(
                             height: $('section.editor').height() - 66
                         });
                     },
-                    /*
-                     _cropTransparency: function() {
-                     var ctx = this.layer.getContext();
-                     var ww = this.layer.width();
-                     var wh = this.layer.height();
-                     imageData = ctx.getImageData(0, 0, ww, wh);
-                     var size = {
-                     x: -1,
-                     y: -1,
-                     w: 9999,
-                     h: 9999
-                     };
-                     for (var y = 0; y < wh; y++) {
-                     for (var x = 0; x < ww; x++) {
-                     var pixel = (x * 4) + (y * wh * 4);
-                     a = imageData.data[pixel + 3];
-                     if (a > 0) {
-                     if (x < size.x) {
-                     size.x = x;
-                     }
-                     if (y < size.y) {
-                     size.y = y;
-                     }
-                     if (x > size.w) {
-                     size.w = x;
-                     }
-                     if (y > size.h) {
-                     size.h = y;
-                     }
-                     }
-                     }
-                     }
-                     var relevantData = ctx.getImageData(size.x, size.y, size.w - size.x, size.h - size.y);
-                     var elem = document.createElement('canvas');
-                     var newctx = elem.getContext('2d');
-                     elem.width = size.w - size.x;
-                     elem.height = size.h - size.y;
-                     newctx.putImageData(relevantData, 0, 0);
-                     console.log(newctx.toDataURL());
-                     },
-                     */
                     getTemplates: function() {
                         var t = '', x = 0, start = parseInt($('.more').data('start'));
                         start = (typeof start === 'undefined' ? 0 : start);
@@ -207,7 +166,7 @@ var editor = imageEditor.coreObject.extend(
                                 $('.more').removeClass('backup').html('more').data('start', x).show();
                                 break;
                             }
-                            t += '<div data-id="' + i + '" class="template' + (i % 2 ? ' last' : '') + '"></div>';
+                            t += '<div id="ed_template_' + i + '" data-id="' + i + '" class="template' + (i % 2 ? ' last' : '') + '"></div>';
                             x++;
                             $('.more').addClass('backup').html('back').data('start', 0);
                         }
@@ -222,7 +181,6 @@ var editor = imageEditor.coreObject.extend(
                         this.items = [];
                         this.layer.destroyChildren();
                         this.layer.draw();
-                        this.loadConfig(config.presets);
                         //localStorage.editor = '';
                     },
                     /**

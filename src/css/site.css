@@ -208,6 +208,13 @@ button.button,
     display: none;
 }
 
+.hidden_s {
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    left:-1000px;
+    position:absolute;
+}
 ol,
 ul {
     list-style: none;

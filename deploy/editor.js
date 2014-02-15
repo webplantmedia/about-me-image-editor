@@ -49,6 +49,8 @@ imageEditor.TEMPLATE = [
         name: 'Test 2',
         presets: [{src: "background/paper.jpg", zindex: 0, type: "background", properties: []}, {title: "Hey! Hope you're liking our About me Image Editor!", x: 35, y: 100, width: 390, height: 486, scale: 1, deg: 3.6, zindex: 2, type: "text", properties: [{type: "TextFill", value: "#5f9ea0"}, {type: "FontSize", value: 37}, {type: "FontFamily", value: "Shadows Into Light"}, {type: "LineHeight", value: 1.4}, {type: "TextAlign", value: "left"}, {type: "StrokeColor"}, {type: "StrokeWidth"}]}, {src: "clipart/photoedge.png", x: 5, y: 5, width: 600, height: 600, scale: .9, deg: -.009, zindex: 1, type: "clipart", properties: []}]
     }, {
+        name: 'Test 3',
+        presets: [{"src":"background/bg.png","zindex":0,"type":"background","properties":[]},{"src":"clipart/poppy.png","x":100,"y":100,"width":600,"height":600,"scale":0.5,"deg":-0.009,"zindex":1,"type":"clipart","properties":[{"type":"Opacity","value":1}]},{"title":"An actor must interpret life, and in order to do so must be willing to accept all the experiences life has to offer.","x":57,"y":227,"width":390,"height":243.20000000000002,"scale":1,"deg":0.6,"zindex":2,"type":"text","properties":[{"type":"ShadowColor","value":"#000000"},{"type":"ShadowOffset","value":{"x":0,"y":0}},{"type":"ShadowBlur"},{"type":"ShadowOpacity"},{"type":"Opacity","value":1},{"type":"TextFill","value":"#ffffff"},{"type":"FontSize","value":38},{"type":"FontFamily","value":"Sacramento"},{"type":"LineHeight","value":1.6},{"type":"TextAlign","value":"left"},{"type":"StrokeColor","value":"#000000"},{"type":"StrokeWidth","value":3}]}]
     }, {
     }, {
     }, {
@@ -1586,16 +1588,17 @@ imageEditor.SETTINGS = [{
                 title: "Stroke Width",
                 data: {
                     type: "range",
-                    min: 0,
+                    min: 1,
                     max: 40,
                     step: 1,
-                    start: 0
+                    start: 1
                 }
             }, {
                 type: "StrokeColor",
                 title: "Stroke Color",
                 data: {
-                    type: "color"
+                    type: "color",
+                    transparent: true
                 }
             }]
     }, {
@@ -2125,7 +2128,6 @@ imageEditor.uiShape = imageEditor.uiElement.extend(
                         return this._getShadowedShape().shadowOpacity();
                     },
                     getShadowConfig: function() {
-                        console.log('2');
                         return this._getShadowedShape().hasShadow() ? this._getPropertyConfig(["ShadowColor", "ShadowOffset", "ShadowBlur", "ShadowOpacity"]) : [];
                     },
                     getConfig: function() {
@@ -2158,6 +2160,7 @@ imageEditor.uiText = imageEditor.uiShape.extend(
                     __constructor: function(params) {
                         this.localFonts = ["Arial", "Georgia"];
                         this.cornerOffset = true;
+                        this.strokeCol = '#000000';
                         params.width || (params.width = 400);
                         this.__superobject(params);
                     },
@@ -2261,15 +2264,24 @@ imageEditor.uiText = imageEditor.uiShape.extend(
                         this.stroke.stroke(n);
                     },
                     getStrokeColor: function() {
-                        if (this.stroke)
+                        if (this.stroke) {
                             return this.stroke.stroke();
+                        }
                     },
                     setStrokeWidth: function(n) {
-                        n === 0 ? this._removeStroke() : (this._createStroke(), this.stroke.strokeWidth(n));
+                        this.strokeWid = n;
+                        if (n === 0) {
+                            this._removeStroke();
+                        }
+                        else {
+                            this._createStroke();
+                            this.stroke.strokeWidth(n);
+                        }
                     },
                     getStrokeWidth: function() {
-                        if (this.stroke)
+                        if (this.stroke) {
                             return this.stroke.strokeWidth();
+                        }
                     },
                     setOpacity: function(n) {
                         this.txt.opacity(n);
@@ -2327,7 +2339,6 @@ imageEditor.uiText = imageEditor.uiShape.extend(
                         this.stroke && (this._transferShadow(this.stroke, this.txt), this.stroke.remove(), this.stroke = null);
                     },
                     _getShadowedShape: function() {
-                        console.log('1');
                         return this.stroke || this.txt;
                     },
                     _transferShadow: function(n, t) {
@@ -4195,47 +4206,6 @@ var editor = imageEditor.coreObject.extend(
                             height: $('section.editor').height() - 66
                         });
                     },
-                    /*
-                     _cropTransparency: function() {
-                     var ctx = this.layer.getContext();
-                     var ww = this.layer.width();
-                     var wh = this.layer.height();
-                     imageData = ctx.getImageData(0, 0, ww, wh);
-                     var size = {
-                     x: -1,
-                     y: -1,
-                     w: 9999,
-                     h: 9999
-                     };
-                     for (var y = 0; y < wh; y++) {
-                     for (var x = 0; x < ww; x++) {
-                     var pixel = (x * 4) + (y * wh * 4);
-                     a = imageData.data[pixel + 3];
-                     if (a > 0) {
-                     if (x < size.x) {
-                     size.x = x;
-                     }
-                     if (y < size.y) {
-                     size.y = y;
-                     }
-                     if (x > size.w) {
-                     size.w = x;
-                     }
-                     if (y > size.h) {
-                     size.h = y;
-                     }
-                     }
-                     }
-                     }
-                     var relevantData = ctx.getImageData(size.x, size.y, size.w - size.x, size.h - size.y);
-                     var elem = document.createElement('canvas');
-                     var newctx = elem.getContext('2d');
-                     elem.width = size.w - size.x;
-                     elem.height = size.h - size.y;
-                     newctx.putImageData(relevantData, 0, 0);
-                     console.log(newctx.toDataURL());
-                     },
-                     */
                     getTemplates: function() {
                         var t = '', x = 0, start = parseInt($('.more').data('start'));
                         start = (typeof start === 'undefined' ? 0 : start);
@@ -4244,7 +4214,7 @@ var editor = imageEditor.coreObject.extend(
                                 $('.more').removeClass('backup').html('more').data('start', x).show();
                                 break;
                             }
-                            t += '<div data-id="' + i + '" class="template' + (i % 2 ? ' last' : '') + '"></div>';
+                            t += '<div id="ed_template_' + i + '" data-id="' + i + '" class="template' + (i % 2 ? ' last' : '') + '"></div>';
                             x++;
                             $('.more').addClass('backup').html('back').data('start', 0);
                         }
@@ -4259,7 +4229,6 @@ var editor = imageEditor.coreObject.extend(
                         this.items = [];
                         this.layer.destroyChildren();
                         this.layer.draw();
-                        this.loadConfig(config.presets);
                         //localStorage.editor = '';
                     },
                     /**

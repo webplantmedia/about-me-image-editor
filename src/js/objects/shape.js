@@ -266,7 +266,6 @@ imageEditor.uiShape = imageEditor.uiElement.extend(
                         return this._getShadowedShape().shadowOpacity();
                     },
                     getShadowConfig: function() {
-                        console.log('2');
                         return this._getShadowedShape().hasShadow() ? this._getPropertyConfig(["ShadowColor", "ShadowOffset", "ShadowBlur", "ShadowOpacity"]) : [];
                     },
                     getConfig: function() {
