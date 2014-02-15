@@ -96,7 +96,6 @@ imageEditor.uiWindowElement = imageEditor.coreObject.extend(
                                 r.style.height = o + "px";
                                 $(r).Jcrop({
                                     setSelect: [0, 0, e, o],
-                                    //aspectRatio: 3 / 4,
                                     onSelect: function(n) {
                                         i.jcrop.crop = n;
                                     }
@@ -157,7 +156,6 @@ imageEditor.uiWindowElement = imageEditor.coreObject.extend(
                                 r.style.height = o + "px";
                                 $(r).Jcrop({
                                     setSelect: [0, 0, e, o],
-                                    //aspectRatio: 3 / 4,
                                     onSelect: function(n) {
                                         i.jcrop.crop = n;
                                     }
