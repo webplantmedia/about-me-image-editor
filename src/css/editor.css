@@ -1608,7 +1608,7 @@ body {
 .iScrollHorizontalScrollbar {
     position: absolute;
     z-index: 9999;
-    height: 16px;
+    height: 15px;
     left: 2px;
     right: 2px;
     bottom: 2px;
