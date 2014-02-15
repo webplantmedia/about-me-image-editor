@@ -14,12 +14,12 @@ echo - Compressing prerequisite libraries
 cat prerequisites.filelist | xargs cat >> ../deploy/prerequisites.js
 
 echo - Compressing editor library
-cat editor.filelist | xargs cat >> ../deploy/editor.js
+cat editor.filelist | xargs cat > ../deploy/editor.js
 
 echo - Compiling prerequisite libraries
-java -jar google-closure-compiler.jar --js=../deploy/prerequisites.js --js_output_file=../deploy/prerequisites.min.js > ../logs/prerequisites.build.log
+java -jar google-closure-compiler.jar --js=../deploy/prerequisites.js --js_output_file=../deploy/prerequisites.min.js 2> ../logs/prerequisites.build.log
 
 echo - Compiling editor library
-java -jar google-closure-compiler.jar --js=../deploy/editor.js --js_output_file=../deploy/editor.min.js > ../logs/editor.build.log
+java -jar google-closure-compiler.jar --js=../deploy/editor.js --js_output_file=../deploy/editor.min.js 2> ../logs/editor.build.log
 
 echo =============== Done ====================================
