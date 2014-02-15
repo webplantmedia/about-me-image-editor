@@ -20,7 +20,7 @@ imageEditor.uiToolbarElement = imageEditor.coreObject.extend(
                             scrollY: false,
                             tap: true,
                             mouseWheel: true,
-                            scrollbars: true,
+                            scrollbars: 'custom',
                             interactiveScrollbars: true,
                             mouseWheelSpeed: 40
                         });

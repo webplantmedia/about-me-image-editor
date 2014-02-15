@@ -105,6 +105,13 @@ imageEditor.uiText = imageEditor.uiShape.extend(
                         this.txt.setAlign(align);
                         this.stroke && this.stroke.setAlign(align);
                     },
+                    setFontStyle: function(style) {
+                        this.txt.fontStyle(style);
+                        this.stroke && this.stroke.fontStyle(style);
+                    },
+                    getFontStyle: function() {
+                        return this.txt.fontStyle();
+                    },
                     getTextAlign: function() {
                         return this.txt.getAlign();
                     },
@@ -148,7 +155,7 @@ imageEditor.uiText = imageEditor.uiShape.extend(
                     },
                     getProperties: function() {
                         var n = this.getShadowConfig();
-                        n = n.concat(this._getPropertyConfig(["Opacity", "TextFill", "FontSize", "FontFamily", "LineHeight", "TextAlign"]));
+                        n = n.concat(this._getPropertyConfig(["Opacity", "TextFill", "FontSize", "FontFamily", "LineHeight", "TextAlign", "FontStyle"]));
                         if (this.stroke) {
                             n = n.concat(this._getPropertyConfig(["StrokeColor", "StrokeWidth"]));
                         }

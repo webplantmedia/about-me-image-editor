@@ -94,6 +94,22 @@ imageEditor.SETTINGS = [{
                     start: 28
                 }
             }, {
+                type: "FontStyle",
+                title: "Font Style",
+                data: [{
+                        id: 1,
+                        title: "Normal",
+                        value: "normal"
+                    }, {
+                        id: 2,
+                        title: "Italic",
+                        value: "italic"
+                    }, {
+                        id: 3,
+                        title: "Bold",
+                        value: "bold"
+                    }]
+            }, {
                 type: "TextAlign",
                 title: "Text Align",
                 data: [{
