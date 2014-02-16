@@ -4121,6 +4121,7 @@ var editor = imageEditor.coreObject.extend(
                         $('.reset').on('click', function() {
                             if (confirm('Are you sure you want to reset the workspace? You will lose all the changes!')) {
                                 self.clearStage();
+                                self.loadConfig(config.presets);
                             }
                             return false;
                         });
