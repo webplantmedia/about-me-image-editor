@@ -1039,7 +1039,7 @@ body {
 .toolbar {
     background-color: #ddd;
     border-top: 1px solid #A9AAAC;
-    height: 70px;
+    height: 80px;
     position: relative;
     overflow: hidden;
 }
@@ -1221,24 +1221,24 @@ body {
 .editor-pan {
     position: absolute;
     left: 0;
-    bottom: 65px;
+    bottom: 75px;
     width: 100%;
     display: none;
 }
 
 .editor-pan-body {
-    max-height: 100px;
+    max-height: 110px;
     background-color: #ddd;
     border-top: solid 1px #cccedb;
-    height: 100px;
+    height: 110px;
 }
 
 .editor-pan-body.maxi {
-    height: 100px;
+    height: 110px;
 }
 
 .editor-pan-body.mini {
-    max-height: 120px !important;
+    max-height: 130px !important;
     height: auto !important;
 }
 
@@ -1294,7 +1294,7 @@ body {
     -ms-border-radius: 0 0 4px 0;
     -moz-border-radius: 0 0 4px 0;
     -webkit-border-radius: 0 0 4px 0;
-    bottom: 1px;
+    bottom: 11px;
     font-size: 13px;
     border-right: 0;
     border-bottom: 0;
@@ -1307,7 +1307,7 @@ body {
 
 .editor-pan-nav {
     position: absolute;
-    bottom: 100px;
+    bottom: 110px;
     width: 100%;
     padding: 0 5px;
 }
@@ -1322,7 +1322,7 @@ body {
 
 .editor-pan-nav li {
     float: left;
-    width: 25%;
+    width: 20%;
     padding: 0 1px;
 }
 
@@ -1551,6 +1551,18 @@ body {
     background: transparent url(../images/rectangle.png) no-repeat center 14px;
 }
 
+.thumb-fontstyle-normal {
+    background: transparent url(../images/normal.png) no-repeat center 14px;
+}
+
+.thumb-fontstyle-italic {
+    background: transparent url(../images/italic.png) no-repeat center 14px;
+}
+
+.thumb-fontstyle-bold {
+    background: transparent url(../images/bold.png) no-repeat center 14px;
+}
+
 .thumb-filter-none {
     background-position: 0% top;
 }
@@ -1596,7 +1608,7 @@ body {
 .iScrollHorizontalScrollbar {
     position: absolute;
     z-index: 9999;
-    height: 8px;
+    height: 15px;
     left: 2px;
     right: 2px;
     bottom: 2px;

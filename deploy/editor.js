@@ -1535,6 +1535,22 @@ imageEditor.SETTINGS = [{
                     start: 28
                 }
             }, {
+                type: "FontStyle",
+                title: "Font Style",
+                data: [{
+                        id: 1,
+                        title: "Normal",
+                        value: "normal"
+                    }, {
+                        id: 2,
+                        title: "Italic",
+                        value: "italic"
+                    }, {
+                        id: 3,
+                        title: "Bold",
+                        value: "bold"
+                    }]
+            }, {
                 type: "TextAlign",
                 title: "Text Align",
                 data: [{
@@ -2258,6 +2274,13 @@ imageEditor.uiText = imageEditor.uiShape.extend(
                         this.txt.setAlign(align);
                         this.stroke && this.stroke.setAlign(align);
                     },
+                    setFontStyle: function(style) {
+                        this.txt.fontStyle(style);
+                        this.stroke && this.stroke.fontStyle(style);
+                    },
+                    getFontStyle: function() {
+                        return this.txt.fontStyle();
+                    },
                     getTextAlign: function() {
                         return this.txt.getAlign();
                     },
@@ -2301,7 +2324,7 @@ imageEditor.uiText = imageEditor.uiShape.extend(
                     },
                     getProperties: function() {
                         var n = this.getShadowConfig();
-                        n = n.concat(this._getPropertyConfig(["Opacity", "TextFill", "FontSize", "FontFamily", "LineHeight", "TextAlign"]));
+                        n = n.concat(this._getPropertyConfig(["Opacity", "TextFill", "FontSize", "FontFamily", "LineHeight", "TextAlign", "FontStyle"]));
                         if (this.stroke) {
                             n = n.concat(this._getPropertyConfig(["StrokeColor", "StrokeWidth"]));
                         }
@@ -3679,7 +3702,7 @@ imageEditor.uiToolbarElement = imageEditor.coreObject.extend(
                             scrollY: false,
                             tap: true,
                             mouseWheel: true,
-                            scrollbars: true,
+                            scrollbars: 'custom',
                             interactiveScrollbars: true,
                             mouseWheelSpeed: 40
                         });
