@@ -67,7 +67,24 @@ var editor = imageEditor.coreObject.extend(
                         });
                         $('.download').on('click', function() {
                             self.toDataUrl(function(t) {
+                                /* Crop Window */
                                 self.window.cropPhotoSave(t);
+                                /* Disable Crop */
+                                /*
+                                $.ajax({
+                                    type: "POST",
+                                    url: config.apiExportURL,
+                                    data: {
+                                        imgData: t
+                                    },
+                                    cache: false,
+                                    success: function(result) {
+                                        $('.export-iframe').remove();
+                                        $('body').append('<iframe class="export-iframe" src=""></iframe>');
+                                        $('.export-iframe').attr('src', config.apiExportURL + '?get=' + result);
+                                    }
+                                });
+                                */
                             }), false;
                             return false;
                         });
