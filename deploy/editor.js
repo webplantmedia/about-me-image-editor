@@ -3927,7 +3927,8 @@ imageEditor.uiWindowElement = imageEditor.coreObject.extend(
                             n.width = config.width;
                             n.height = config.height;
                             var r = i.jcrop.scale, u = i.jcrop.crop, e = n.getContext("2d");
-                            e.drawImage(t(), Math.floor(u.x / r), Math.floor(u.y / r), Math.floor(u.w / r), Math.floor(u.h / r), 0, 0, config.width, config.height);
+                            //e.drawImage(t(), Math.floor(u.x / r), Math.floor(u.y / r), Math.floor(u.w / r), Math.floor(u.h / r), 0, 0, config.width, config.height);
+                            e.drawImage(t(), Math.floor(u.x / r), Math.floor(u.y / r), Math.floor(u.w / r), Math.floor(u.h / r));
                             f = n.toDataURL("image/jpeg", 0.84);
                             this.editor.getSelectedObject().setPhoto(f);
                             this.close();
