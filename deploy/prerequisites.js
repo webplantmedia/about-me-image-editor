@@ -5093,7 +5093,7 @@ window.Modernizr=function(n,t,i){function p(n){k.cssText=n}function e(n,t){retur
     // Styling Options
     baseClass: 'jcrop',
     addClass: null,
-    bgColor: 'black',
+    bgColor: 'transparent',
     bgOpacity: 0.6,
     bgFade: false,
     borderOpacity: 0.4,

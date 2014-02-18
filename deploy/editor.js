@@ -3929,7 +3929,7 @@ imageEditor.uiWindowElement = imageEditor.coreObject.extend(
                             var r = i.jcrop.scale, u = i.jcrop.crop, e = n.getContext("2d");
                             //e.drawImage(t(), Math.floor(u.x / r), Math.floor(u.y / r), Math.floor(u.w / r), Math.floor(u.h / r), 0, 0, config.width, config.height);
                             e.drawImage(t(), Math.floor(u.x / r), Math.floor(u.y / r), Math.floor(u.w / r), Math.floor(u.h / r));
-                            f = n.toDataURL("image/jpeg", 0.84);
+                            f = n.toDataURL("image/jpeg", 1.0);
                             this.editor.getSelectedObject().setPhoto(f);
                             this.close();
                         }.bind(this)));
@@ -3979,7 +3979,7 @@ imageEditor.uiWindowElement = imageEditor.coreObject.extend(
                             n.height = config.height;
                             var r = i.jcrop.scale, u = i.jcrop.crop, e = n.getContext("2d");
                             e.drawImage(t(), Math.floor(u.x / r), Math.floor(u.y / r), Math.floor(u.w / r), Math.floor(u.h / r), 0, 0, config.width, config.height);
-                            f = n.toDataURL("image/png", 0.9);
+                            f = n.toDataURL("image/png", 1.0);
                             $.ajax({
                                 type: "POST",
                                 url: config.apiExportURL,
@@ -4146,7 +4146,24 @@ var editor = imageEditor.coreObject.extend(
                         });
                         $('.download').on('click', function() {
                             self.toDataUrl(function(t) {
+                                /* Crop Window */
                                 self.window.cropPhotoSave(t);
+                                /* Disable Crop */
+                                /*
+                                $.ajax({
+                                    type: "POST",
+                                    url: config.apiExportURL,
+                                    data: {
+                                        imgData: t
+                                    },
+                                    cache: false,
+                                    success: function(result) {
+                                        $('.export-iframe').remove();
+                                        $('body').append('<iframe class="export-iframe" src=""></iframe>');
+                                        $('.export-iframe').attr('src', config.apiExportURL + '?get=' + result);
+                                    }
+                                });
+                                */
                             }), false;
                             return false;
                         });
