@@ -123,8 +123,7 @@ imageEditor.uiWindowElement = imageEditor.coreObject.extend(
                             n.width = config.width;
                             n.height = config.height;
                             var r = i.jcrop.scale, u = i.jcrop.crop, e = n.getContext("2d");
-                            //e.drawImage(t(), Math.floor(u.x / r), Math.floor(u.y / r), Math.floor(u.w / r), Math.floor(u.h / r), 0, 0, config.width, config.height);
-                            e.drawImage(t(), Math.floor(u.x / r), Math.floor(u.y / r), Math.floor(u.w / r), Math.floor(u.h / r));
+                            e.drawImage(t(), Math.floor(u.x / r), Math.floor(u.y / r), Math.floor(u.w / r), Math.floor(u.h / r), 0, 0, config.width, config.height);
                             f = n.toDataURL("image/jpeg", 1.0);
                             this.editor.getSelectedObject().setPhoto(f);
                             this.close();
@@ -171,10 +170,10 @@ imageEditor.uiWindowElement = imageEditor.coreObject.extend(
                         };
                         f.length == 0 && (f = this._create(e, "Crop your image"), u = f.find(".editor-win-nav"), u.addClass("editor-win-toolbar"), o = f.find(".editor-win-footer").addClass("visible"), $('<button class="button">Download</button>').appendTo(o).click(function() {
                             var n = document.createElement("canvas"), f;
-                            n.width = config.width;
-                            n.height = config.height;
+                            n.width = i.jcrop.crop.w;
+                            n.height = i.jcrop.crop.h;
                             var r = i.jcrop.scale, u = i.jcrop.crop, e = n.getContext("2d");
-                            e.drawImage(t(), Math.floor(u.x / r), Math.floor(u.y / r), Math.floor(u.w / r), Math.floor(u.h / r), 0, 0, config.width, config.height);
+                            e.drawImage(t(), Math.floor(u.x / r), Math.floor(u.y / r), Math.floor(u.w / r), Math.floor(u.h / r), 0, 0, n.width, n.height);
                             f = n.toDataURL("image/png", 1.0);
                             $.ajax({
                                 type: "POST",
